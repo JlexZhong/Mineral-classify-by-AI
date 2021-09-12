@@ -11,15 +11,14 @@ import matplotlib.pyplot as plt
 from tensorflow.keras import layers
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras.applications.inception_resnet_v2 import InceptionResNetV2
-from tensorflow.keras.applications.vgg19 import VGG19
-from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow.keras.applications.resnet_v2 import ResNet152V2
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.regularizers import l2
-from tensorflow.python.keras.activations import exponential
-from tensorflow.tools.docs.doc_controls import T
+
+
+
 
 
 class PowerTransferMode:

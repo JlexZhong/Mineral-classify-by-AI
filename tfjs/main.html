@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Image classification with Tensorflow.js</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+    </head>
+ 
+    <body>
+        <h1>Custom Image Classifier using Tensorflow.js</h1>
+        <!--定义一个具有特定高度和宽度的canvas元素-->
+        <canvas style=" border: 2px dashed #34495e; margin: auto;" width="299" height="299"></canvas>
+        <!--创建按钮-->
+        <h3>Train classifier with examples</h3>
+        
+        <button type="button" id="PREDICT" onclick="startPredict()" >predict</button>
+        <div id="prediction"></div>
+        <script>
+            const canvas = document.querySelector("canvas");
+            const context = canvas.getContext("2d");
+            
+ 
+            const onImageDrop = e => {
+                e.preventDefault();
+ 
+                const imageFile = e.dataTransfer.files[0];
+                const imageReader = new FileReader();
+ 
+                imageReader.onload = imageFile => {
+                    const image = new Image();
+ 
+                    image.onload = () => {
+                        context.drawImage(image, 0, 0, 299, 299);
+                    };
+ 
+                    image.src = imageFile.target.result;
+                };
+ 
+                imageReader.readAsDataURL(imageFile);
+            };
+ 
+            canvas.addEventListener('dragover', e => e.preventDefault(), false);
+            canvas.addEventListener('drop', onImageDrop, false);
+            
+            
+        </script>
+    </body>
+    <script src="main.js"></script>
+</html>

@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Predict dog breed</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> 
+	</script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet">
+	</script>
+  </head>
+  <body>
+    <h3>Predicting the breed of the dog</h3>
+    <img id="image" alt="dog breed" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ05Ityl0QQfz-ZHTHyJcPLuyKcxMZKyVdrPg&usqp=CAU" crossorigin='anonymous'/>
+    <script>
+      const image = document.getElementById('image');
+ 
+      const predictBreed = async () => {
+        console.log("Model is loading...");
+        const model = await mobilenet.load();
+        console.log("Model loaded Successfully!")
+        const predictions = await model.classify(image);
+        console.log('The dog in the picture could be: ', predictions);
+      }
+      predictBreed();
+    </script>
+  </body>
+</html>
